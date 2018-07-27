@@ -1,13 +1,6 @@
 $(document).ready(onReady);
 
 function onReady() {
-    // //add input boxes
-    // $('#inputs').append('<input id="first-name" type="text" />');
-    // $('#inputs').append('<input id="last-name" type="text" />');
-    // $('#inputs').append('<input id="Id" type="text" />');
-    // $('#inputs').append('<input id="title" type="text" />');
-    // $('#inputs').append('<input id="annual-salary" type="text" />');
-
     //add table headers
     $('#data').append(
         `<tr>
@@ -42,7 +35,7 @@ function addToTable() {
             <td>${lastName}</td>
             <td>${Id}</td>
             <td>${title}</td>
-            <td>${annualSalary}</td>
+            <td>$${annualSalary}</td>
             </tr>`
     );
 
