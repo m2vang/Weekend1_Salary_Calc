@@ -1,0 +1,18 @@
+*{
+    box-sizing: border-box;
+}
+
+html, body{
+    text-align: center;
+}
+
+table, th, td {
+  background-color: white;
+  border: 1px solid black;
+  width: 500px;
+  align-self: center
+}
+
+table {
+  margin: 20px auto 20px auto;
+}
