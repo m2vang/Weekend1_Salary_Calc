@@ -42,12 +42,12 @@ function onReady() {
 } //end of onReady
 
 function clickHandler() {
-    //adding employee
+    //adding employee when submit button is clicked
     $('#submit').on('click', addToTable);
 
     //removing employee
     //target parent of element that doesn't exist on DOM
-    if ($('#tablebody').on('click', '#row' , removeEmployee));
+    if ($('#tablebody').on('click', '#delete' , removeEmployee));
 
 } //end of clickHandler
 
