@@ -15,23 +15,18 @@ $(document).ready(onReady);
 
 function onReady() {
     //create table
-    let table = $( '<table></table>');
+    let table = $( '<table align="center"></table>');
     table.append(`<thead><tr><th>Name</th>
     <th>Last Name</th>
     <th>Id Number</th>
     <th>Title</th>
     <th>Annual Salary</th>
-    <th id="remove"></th></thead>`);
+    <th id="remove">Delete</th></thead>`);
 
     //create table body
     let tbody = $( '<tbody id="tablebody"></tbody>');
     //add table body to table
     table.append(tbody);
-
-    //create buttons
-    let submitBtn = $( '<button id="submit">Submit</button>');
-    //add buttons to buttons div
-    $('#sButton').append(submitBtn);
 
     //add table to data div
     $('#data').append(table);
@@ -74,7 +69,7 @@ function addToTable() {
         '</td><td>' + Id + 
         '</td><td>' + title + 
         '</td><td>' + '$' + annualSalary + 
-        '</td><td><button id="delete">Delete</button></td>'  +
+        '</td><td id="dBtn"><button id="delete">X</button></td>'  +
         '</tr>');
 
     // $('#tablebody').append(deleteBtn);
