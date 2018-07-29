@@ -1,5 +1,4 @@
 let employee = [];
-let mSalary = [];
 
 class Employee{
     constructor( name, lastName, idNumber, title, annualSalary){
@@ -15,16 +14,20 @@ $(document).ready(onReady);
 
 function onReady() {
     //create table
-    let table = $( '<table align="center"></table>');
-    table.append(`<thead><tr><th>Name</th>
-    <th>Last Name</th>
-    <th>Id Number</th>
-    <th>Title</th>
-    <th>Annual Salary</th>
-    <th id="remove">Delete</th></thead>`);
+    let table = $('<table align="center"></table>');
+    table.append(
+        `<thead><tr>
+            <th>Name</th>
+            <th>Last Name</th>
+            <th>Id Number</th>
+            <th>Title</th>
+            <th>Annual Salary</th>
+            <th>Delete</th>
+        </thead>`
+    );
 
     //create table body
-    let tbody = $( '<tbody id="tablebody"></tbody>');
+    let tbody = $('<tbody id="tablebody"></tbody>');
     //add table body to table
     table.append(tbody);
 
@@ -33,7 +36,6 @@ function onReady() {
 
     //run clickHandler
     clickHandler();
-
 } //end of onReady
 
 function clickHandler() {
@@ -41,12 +43,16 @@ function clickHandler() {
     $('#submit').on('click', addToTable);
 
     //removing employee
-    //target parent of element that doesn't exist on DOM
+    //target #tablebody, which is the parent of the delete button
+    //then target the #delete of the delete button when clicked and run the removeEmployee()
     if ($('#tablebody').on('click', '#delete' , removeEmployee));
 
 } //end of clickHandler
 
+let mSalary = [];
+
 function addToTable() {
+    //variables
     let firstName = $('#first-name').val();
     let lastName = $('#last-name').val();
     let Id = $('#Id').val();
@@ -56,28 +62,30 @@ function addToTable() {
     //push the monthly salary into the mSalary array
     mSalary.push(monthlySalary);
 
-    //create new employee & push it into the employee array
-    // let newEmployee = new Employee( $('#first-name').val(), $('#last-name').val(), 
-    // $('#Id').val(), $('#title').val(), $('#annual-salary').val() );
+    //***create new employee & push it into the employee array
+    //let newEmployee = new Employee( $('#first-name').val(), $('#last-name').val(), 
+    //$('#Id').val(), $('#title').val(), $('#annual-salary').val() );
     //line below is a better way to code for the same two lines above
     employee.push(new Employee ($('#first-name').val(), $('#last-name').val(),
         $('#Id').val(), $('#title').val(), $('#annual-salary').val()) );
     
     //adding value input to the table body
-    $('#tablebody').append('<tr id="row"><td>' + firstName + 
-        '</td><td>' + lastName +
-        '</td><td>' + Id + 
-        '</td><td>' + title + 
-        '</td><td>' + '$' + annualSalary + 
-        '</td><td id="dBtn"><button id="delete">X</button></td>'  +
+    $('#tablebody').append(
+        '<tr id="row"><td>' + firstName + 
+            '</td><td>' + lastName +
+            '</td><td>' + Id + 
+            '</td><td>' + title + 
+            '</td><td>' + '$' + annualSalary + 
+            '</td><td><button id="delete">X</button></td>'  +
         '</tr>');
 
-    // $('#tablebody').append(deleteBtn);
-    //change total monthly background color to red if mSalary > 20000
-    $('.monthlySal').html('Total Monthly: $' + mSalary.reduce(getSum).toFixed(2));
+    
+    //updating mSalary & displaying it after clicking on submit
+    $('.monthlySal').html('Total Monthly: $' + mSalary.reduce(getSum).toFixed(2)); //.reduce means that it'll reduce the array to a single value
+    //change total monthly background color to red if mSalary is greater than 20000
     if (mSalary.reduce(getSum).toFixed(2) > 20000){
         $('#footer').css('background-color', 'red');
-    }
+    }//end of if statement
 
     //empty each input
     $('#first-name').val('');
@@ -89,10 +97,8 @@ function addToTable() {
 
 function getSum(total, num) {
     return total + num;
-    
-}
+} //end of getSum
 
 function removeEmployee() {
     $('#row').remove();
-
-}
+}//end of removeEmployee
